@@ -1,16 +1,6 @@
-# virtual_galaxy_explorer
+# Virtual Galaxy Explorer
+## Description of the application : 
+Galaxy Explorer is a mobile application built using Flutter, designed to provide users with an immersive and educational journey through our galaxy. With a focus on modern design and user experience, Galaxy Explorer brings the cosmos to your fingertips, offering a seamless blend of cutting-edge technology and rich astronomical content.
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+PS : 
+- the code for the pages of the mobile application can be found in the lib directory.
