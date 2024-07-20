@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'launch.dart';
 
-// void main() {
-//     runApp(MaterialApp(
-//       routes: {
-//         '/' : launch(),
-//       },
-//     ));
-// }
+void main() {
+    runApp(MaterialApp(
+      routes: {
+        '/' : (context) =>launch(),
+      },
+    ));
+}
 
