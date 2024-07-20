@@ -4,7 +4,7 @@ import 'launch.dart';
 void main() {
     runApp(MaterialApp(
       routes: {
-        '/' : (context) =>launch(),
+        '/' : (context) =>Launch(),
       },
     ));
 }
