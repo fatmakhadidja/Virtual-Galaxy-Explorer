@@ -24,7 +24,50 @@ class _SatelitesstartingState extends State<Satelitesstarting> {
         child: Stack(
           children: [
             Positioned(
-              top: 90,
+              top: 50,
+              left: 35,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation, secondaryAnimation) => Planetsstarting(),
+                      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                        const begin = Offset(1.0, 0.0); // Start from the right side
+                        const end = Offset.zero; // End at the left side
+                        const curve = Curves.easeInOut;
+                        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                        return SlideTransition(
+                          position: animation.drive(tween),
+                          child: child,
+                        );
+                      },
+                    ),
+                  );
+                },
+                child: Container(
+                  height: 40,
+                  width: 70,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      SizedBox(width: 6),
+                      Icon(
+                        Icons.arrow_back_rounded,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 100,
               left: 40,
               child: Text(
                 'Learn about',
@@ -37,7 +80,7 @@ class _SatelitesstartingState extends State<Satelitesstarting> {
               ),
             ),
             Positioned(
-              top: 140,
+              top: 145,
               left: 40,
               child: const Text(
                 'Satellites',
