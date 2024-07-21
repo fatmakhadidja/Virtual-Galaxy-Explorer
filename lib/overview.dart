@@ -26,33 +26,53 @@ class _OverviewState extends State<Overview> {
             Positioned(
               top: 50,
               right: 35,
-              child: Container(
-                height: 40,
-                width: 100,
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.3),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      'Skip',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Poppins',
-                        color: Colors.white,
-                        letterSpacing: 1,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation, secondaryAnimation) => LoginOption(),
+                      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                        const begin = Offset(1.0, 0.0); // Start from the right side
+                        const end = Offset.zero; // End at the left side
+                        const curve = Curves.easeInOut;
+                        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                        return SlideTransition(
+                          position: animation.drive(tween),
+                          child: child,
+                        );
+                      },
+                    ),
+                  );
+                },
+                child: Container(
+                  height: 40,
+                  width: 100,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        'Skip',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
+                          letterSpacing: 1,
+                        ),
                       ),
-                    ),
-                    SizedBox(width: 6),
-                    Icon(
-                      Icons.arrow_right_alt,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                  ],
+                      SizedBox(width: 6),
+                      Icon(
+                        Icons.arrow_right_alt,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
