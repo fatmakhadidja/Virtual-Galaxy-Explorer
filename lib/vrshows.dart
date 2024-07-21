@@ -1,23 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:virtual_galaxy_explorer/satelitesstarting.dart';
-import 'package:virtual_galaxy_explorer/vrshows.dart';
-import 'package:virtual_galaxy_explorer/q&a.dart'; // Import the QandA page
+import 'package:virtual_galaxy_explorer/home.dart';
+import 'package:virtual_galaxy_explorer/q&a.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class Vrshows extends StatefulWidget {
+  const Vrshows({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<Vrshows> createState() => _VrshowsState();
 }
 
-class _HomeState extends State<Home> {
-
-  void _navigateToQandA() {
+class _VrshowsState extends State<Vrshows> {
+  void _navigateToHome() {
     Navigator.pushReplacement(
       context,
       PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => const QandA(),
+        pageBuilder: (context, animation, secondaryAnimation) => const Home(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          const begin = Offset(-1.0, 0.0);
+          const end = Offset.zero;
+          const curve = Curves.easeInOut;
+          var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          return SlideTransition(position: animation.drive(tween), child: child);
+        },
+      ),
+    );
+  }
+
+  void _navigateToVrshows() {
+    Navigator.pushReplacement(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => const Vrshows(),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           const begin = Offset(1.0, 0.0);
           const end = Offset.zero;
@@ -29,26 +42,9 @@ class _HomeState extends State<Home> {
     );
   }
 
-  void _navigateToPage(Widget page, Offset startOffset) {
-    Navigator.pushReplacement(
-      context,
-      PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          var tween = Tween(begin: startOffset, end: Offset.zero)
-              .chain(CurveTween(curve: Curves.easeInOut));
-          return SlideTransition(
-            position: animation.drive(tween),
-            child: child,
-          );
-        },
-      ),
-    );
-  }
-
-  Widget _buildNavigationContainer(String imagePath, Widget page, Offset startOffset) {
+  Widget _buildNavigationContainer(String imagePath) {
     return GestureDetector(
-      onTap: () => _navigateToPage(page, startOffset),
+      onTap: _navigateToVrshows,
       child: Container(
         height: 196,
         width: double.infinity,
@@ -86,6 +82,22 @@ class _HomeState extends State<Home> {
     );
   }
 
+  void _navigateToQandA() {
+    Navigator.pushReplacement(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => const QandA(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          const begin = Offset(1.0, 0.0);
+          const end = Offset.zero;
+          const curve = Curves.easeInOut;
+          var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          return SlideTransition(position: animation.drive(tween), child: child);
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,7 +106,7 @@ class _HomeState extends State<Home> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/Homescreen.png'), // Replace with your image path
+                image: AssetImage('assets/Homescreen.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -107,8 +119,7 @@ class _HomeState extends State<Home> {
                 children: [
                   const SizedBox(height: 15),
                   GestureDetector(
-                    onTap: () => _navigateToPage(
-                        const Satelitesstarting(), const Offset(-1.0, 0.0)),
+                    onTap: _navigateToHome,
                     child: Container(
                       height: 40,
                       width: 70,
@@ -127,7 +138,7 @@ class _HomeState extends State<Home> {
                   ),
                   const SizedBox(height: 20),
                   const Text(
-                    'Welcome aboard',
+                    'Let\'s dive in',
                     style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w500,
@@ -135,39 +146,29 @@ class _HomeState extends State<Home> {
                       color: Colors.white,
                     ),
                   ),
-                  const SizedBox(height: 8), // Add space between texts
-                  Row(
-                    children: [
-                      const Text(
-                        'Space voyager!',
-                        style: TextStyle(
-                          fontSize: 33,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
-                        ),
-                      ),
-                      const SizedBox(width: 20), // Add spacing between Lottie animation and text
-                      Flexible(
-                        child: Lottie.asset(
-                          'assets/earth.json',
-                          height: 50, // Adjust the height as needed
-                        ),
-                      ),
-                    ],
+                  const SizedBox(height: 6),
+                  const Text(
+                    'VR shows',
+                    style: TextStyle(
+                      fontSize: 33,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Poppins',
+                      color: Colors.white,
+                    ),
                   ),
                   const SizedBox(height: 20),
-                  const Divider(
-                    color: Colors.white,
-                    thickness: 3,
-                    indent: 80,
-                    endIndent: 80, // Added endIndent for better visibility
+                  const Image(
+                    image: AssetImage('assets/containerVrshows.png'),
                   ),
                   const SizedBox(height: 30),
-                  _buildNavigationContainer('assets/vrShowsRectangle.png', const Vrshows(), const Offset(1.0, 0.0)),
+                  _buildNavigationContainer('assets/planetsRectangle.png'),
                   const SizedBox(height: 20),
-                  _buildNavigationContainer('assets/q&aRectangle.png', const QandA(), const Offset(1.0, 0.0)),
-                  const SizedBox(height: 1000), // Ensure content is enough for scrolling
+                  _buildNavigationContainer('assets/galaxiesRectangle.png'),
+                  const SizedBox(height: 20),
+                  _buildNavigationContainer('assets/starsRectangle.png'),
+                  const SizedBox(height: 20),
+                  _buildNavigationContainer('assets/satellitesRectangle.png'),
+                  const SizedBox(height: 80),
                 ],
               ),
             ),
@@ -186,17 +187,18 @@ class _HomeState extends State<Home> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _buildBottomNavigationIcon(Icons.home_outlined, const Color(0xFFFFFFFF).withOpacity(0.2)),
-                    const SizedBox(width: 60),
                     GestureDetector(
-                      onTap: () => _navigateToPage(const Vrshows(), const Offset(1.0, 0.0)),
-                      child: _buildBottomNavigationIcon(Icons.tv_rounded, const Color(0xFF141414).withOpacity(0.2)),
+                      onTap: _navigateToHome,
+                      child: _buildBottomNavigationIcon(Icons.home_outlined, Color(0xFF141414).withOpacity(0.2)),
                     ),
                     const SizedBox(width: 60),
+                    _buildBottomNavigationIcon(Icons.tv_rounded, Colors.white.withOpacity(0.2)),
+                    const SizedBox(width: 60),
                     GestureDetector(
-                      onTap : _navigateToQandA,
-                      child :_buildBottomNavigationIcon(Icons.featured_play_list_outlined, Color(0x141414).withOpacity(0.2)),
-                    ),                  ],
+                      onTap: _navigateToQandA,
+                      child : _buildBottomNavigationIcon(Icons.featured_play_list_outlined, Color(0xFF141414).withOpacity(0.2)),
+                    ),
+                  ],
                 ),
               ),
             ),
