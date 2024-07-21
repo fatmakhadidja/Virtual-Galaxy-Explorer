@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_galaxy_explorer/planetsstarting.dart';
+import 'package:virtual_galaxy_explorer/home.dart';
 
 class Satelitesstarting extends StatefulWidget {
   const Satelitesstarting({super.key});
@@ -118,7 +119,7 @@ class _SatelitesstartingState extends State<Satelitesstarting> {
                   Navigator.pushReplacement(
                     context,
                     PageRouteBuilder(
-                      pageBuilder: (context, animation, secondaryAnimation) => Satelitesstarting(),
+                      pageBuilder: (context, animation, secondaryAnimation) => Home(),
                       transitionsBuilder: (context, animation, secondaryAnimation, child) {
                         const begin = Offset(1.0, 0.0); // Start from the right side
                         const end = Offset.zero; // End at the left side

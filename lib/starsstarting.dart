@@ -4,6 +4,7 @@ import 'package:virtual_galaxy_explorer/satelitesstarting.dart';
 import 'planetsstarting.dart';
 
 
+
 class Starsstarting extends StatefulWidget {
   const Starsstarting({super.key});
 
