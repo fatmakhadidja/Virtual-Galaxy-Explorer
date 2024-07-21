@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
-import 'overview.dart';
+import 'package:virtual_galaxy_explorer/loginOption.dart';
+import 'package:virtual_galaxy_explorer/planetsstarting.dart';
+import 'package:virtual_galaxy_explorer/starsstarting.dart';
 
-class Launch extends StatefulWidget {
-  const Launch({super.key});
+class Satelitesstarting extends StatefulWidget {
+  const Satelitesstarting({super.key});
 
   @override
-  State<Launch> createState() => _LaunchState();
+  State<Satelitesstarting> createState() => _SatelitesstartingState();
 }
 
-class _LaunchState extends State<Launch> {
+class _SatelitesstartingState extends State<Satelitesstarting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/launchImage.png'), // Replace with your image path
+            image: AssetImage('assets/satelitesstartingImage.png'), // Replace with your image path
             fit: BoxFit.cover,
           ),
         ),
@@ -25,7 +27,7 @@ class _LaunchState extends State<Launch> {
               top: 90,
               left: 40,
               child: Text(
-                'Virtual',
+                'Learn about',
                 style: TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.w500,
@@ -35,46 +37,39 @@ class _LaunchState extends State<Launch> {
               ),
             ),
             Positioned(
-              top: 130,
+              top: 140,
               left: 40,
-              child: Text(
-                'Galaxy',
+              child: const Text(
+                'Satellites',
                 style: TextStyle(
-                  fontSize: 77,
+                  fontSize: 63,
                   fontWeight: FontWeight.w600,
-                  fontFamily: 'poppins',
+                  fontFamily: 'Poppins',
                   color: Colors.white,
                 ),
               ),
             ),
             Positioned(
-              top: 200,
+              bottom: 190,
               left: 40,
-              child: Text(
-                'Explorer',
+              child: const Text(
+                'Venture into the realm of\n'
+                    'man-made wonders that orbit\n'
+                    'our planet. In this section,\n'
+                    'you\'ll uncover the ingenuity\n'
+                    'behind satellites, from \n'
+                    'communication satellites \n'
+                    'linking the world to Earth',
                 style: TextStyle(
-                  fontSize: 77,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'poppins',
+                  fontSize: 19,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Poppins',
                   color: Colors.white,
                 ),
               ),
             ),
             Positioned(
-              top: 310,
-              left: 40,
-              child: Text(
-                'We will learn all of the scientific \ndisciplines that involve.',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  fontFamily: 'poppins',
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: 90,
+              bottom: 40,
               right: 42,
               left: 42,
               child: GestureDetector(
@@ -82,7 +77,7 @@ class _LaunchState extends State<Launch> {
                   Navigator.pushReplacement(
                     context,
                     PageRouteBuilder(
-                      pageBuilder: (context, animation, secondaryAnimation) => Overview(),
+                      pageBuilder: (context, animation, secondaryAnimation) => LoginOption(),
                       transitionsBuilder: (context, animation, secondaryAnimation, child) {
                         const begin = Offset(1.0, 0.0); // Start from the right side
                         const end = Offset.zero; // End at the left side
@@ -107,7 +102,7 @@ class _LaunchState extends State<Launch> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Start learning',
+                        'Get started',
                         style: TextStyle(
                           fontSize: 21,
                           fontWeight: FontWeight.w500,

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:virtual_galaxy_explorer/loginOption.dart';
+import 'package:virtual_galaxy_explorer/starsstarting.dart';
+import 'galaxiesStarting.dart';
 
 class Overview extends StatefulWidget {
   const Overview({super.key});
@@ -32,15 +35,15 @@ class _OverviewState extends State<Overview> {
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text(
                       'Skip',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w400,
-                        fontFamily: 'poppins',
+                        fontFamily: 'Poppins',
                         color: Colors.white,
-                        letterSpacing: 1
+                        letterSpacing: 1,
                       ),
                     ),
                     SizedBox(width: 6),
@@ -56,33 +59,135 @@ class _OverviewState extends State<Overview> {
             Positioned(
               top: 90,
               left: 40,
-              child: Text(
+              child: const Text(
                 'Insights',
                 style: TextStyle(
                   fontSize: 63,
                   fontWeight: FontWeight.w600,
-                  fontFamily: 'poppins',
+                  fontFamily: 'Poppins',
                   color: Colors.white,
                 ),
               ),
             ),
-
             Positioned(
               bottom: 180,
               left: 40,
-              child: Text(
+              child: const Text(
                 '"Embark on an interstellar\n voyage like  never before. Explore\n distant galaxies,  uncover cosmic\n secrets, and witness the majesty\n of the universe. Your cosmic\n  adventure begins here." ',
                 style: TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.w500,
-                  fontFamily: 'poppins',
+                  fontFamily: 'Poppins',
                   color: Colors.white,
                 ),
               ),
             ),
             Positioned(
               bottom: 40,
-              child: Image.asset('assets/Carousalbutton.png'),
+              left:150,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation, secondaryAnimation) => Galaxiesstarting(), // Ensure this page exists
+                      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                        const begin = Offset(1.0, 0.0); // Start from the right side
+                        const end = Offset.zero; // End at the left side
+                        const curve = Curves.easeInOut;
+                        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                        return SlideTransition(
+                          position: animation.drive(tween),
+                          child: child,
+                        );
+                      },
+                    ),
+                  );
+                },
+                child: Row(
+                 children: [
+                   GestureDetector(
+                     onTap: () {
+                       Navigator.pushReplacement(
+                         context,
+                         PageRouteBuilder(
+                           pageBuilder: (context, animation, secondaryAnimation) => Galaxiesstarting(),
+                           transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                             const begin = Offset(1.0, 0.0); // Start from the right side
+                             const end = Offset.zero; // End at the left side
+                             const curve = Curves.easeInOut;
+                             var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                             return SlideTransition(
+                               position: animation.drive(tween),
+                               child: child,
+                             );
+                           },
+                         ),
+                       );
+                     },
+                     child: Container(
+                       height: 100,
+                       width: 100,
+                       decoration: BoxDecoration(
+                         color: Colors.white,
+                           shape: BoxShape.circle
+                       ),
+                       child: Icon(
+                         Icons.arrow_right_alt,
+                         color: Colors.black,
+                         size: 40,
+                       ),
+                     ),
+                   ),
+                   SizedBox(width: 30),
+                   Container(
+                     height: 22,
+                     width: 22,
+                     decoration: BoxDecoration(
+                         color: Colors.transparent,
+                         shape: BoxShape.circle,
+                         border: Border.all(
+                         color: Colors.white, // Set the stroke color
+                         width: 4, // Set the stroke width
+                       ),
+                     ),
+                   ),
+                   SizedBox(width: 30),
+                   GestureDetector(
+                     onTap: () {
+                       Navigator.pushReplacement(
+                         context,
+                         PageRouteBuilder(
+                           pageBuilder: (context, animation, secondaryAnimation) => Starsstarting(),
+                           transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                             const begin = Offset(1.0, 0.0); // Start from the right side
+                             const end = Offset.zero; // End at the left side
+                             const curve = Curves.easeInOut;
+                             var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                             return SlideTransition(
+                               position: animation.drive(tween),
+                               child: child,
+                             );
+                           },
+                         ),
+                       );
+                     },
+                     child: Container(
+                       height: 14,
+                       width: 14,
+                       decoration: BoxDecoration(
+                         color: Colors.transparent,
+                         shape: BoxShape.circle,
+                         border: Border.all(
+                           color: Colors.white, // Set the stroke color
+                           width: 4, // Set the stroke width
+                         ),
+                       ),
+                     ),
+                   ),
+                 ],
+                ),
+              ),
             ),
           ],
         ),
