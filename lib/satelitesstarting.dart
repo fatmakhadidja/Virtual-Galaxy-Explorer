@@ -32,7 +32,7 @@ class _SatelitesstartingState extends State<Satelitesstarting> {
                     PageRouteBuilder(
                       pageBuilder: (context, animation, secondaryAnimation) => Planetsstarting(),
                       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                        const begin = Offset(1.0, 0.0); // Start from the right side
+                        const begin = Offset(-1.0, 0.0); // Start from the right side
                         const end = Offset.zero; // End at the left side
                         const curve = Curves.easeInOut;
                         var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));

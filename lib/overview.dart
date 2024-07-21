@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:virtual_galaxy_explorer/satelitesstarting.dart';
 import 'package:virtual_galaxy_explorer/starsstarting.dart';
 import 'galaxiesStarting.dart';
+import 'package:virtual_galaxy_explorer/launch.dart';
 
 class Overview extends StatefulWidget {
   const Overview({super.key});
@@ -23,6 +24,48 @@ class _OverviewState extends State<Overview> {
         ),
         child: Stack(
           children: [
+            Positioned(
+              top: 50,
+              left: 28,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation, secondaryAnimation) => Launch(),
+                      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                        const begin = Offset(-1.0, 0.0); // Start from the right side
+                        const end = Offset.zero; // End at the left side
+                        const curve = Curves.easeInOut;
+                        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                        return SlideTransition(
+                          position: animation.drive(tween),
+                          child: child,
+                        );
+                      },
+                    ),
+                  );
+                },
+                child: Container(
+                  height: 38,
+                  width: 80,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(
+                        Icons.arrow_back_rounded,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
             Positioned(
               top: 50,
               right: 35,

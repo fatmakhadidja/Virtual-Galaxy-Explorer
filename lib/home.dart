@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:virtual_galaxy_explorer/satelitesstarting.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -28,7 +29,47 @@ class _HomeState extends State<Home> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 60), // Provide space at the top
+                  SizedBox(height: 15),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation, secondaryAnimation) => Satelitesstarting(),
+                          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                            const begin = Offset(-1.0, 0.0); // Start from the right side
+                            const end = Offset.zero; // End at the left side
+                            const curve = Curves.easeInOut;
+                            var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                            return SlideTransition(
+                              position: animation.drive(tween),
+                              child: child,
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: 40,
+                      width: 70,
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          SizedBox(width: 6),
+                          Icon(
+                            Icons.arrow_back_rounded,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
                   Text(
                     'Welcome aboard',
                     style: TextStyle(
@@ -59,14 +100,14 @@ class _HomeState extends State<Home> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 20),
                   Divider(
                     color: Colors.white,
                     thickness: 3,
                     indent: 80,
                     endIndent: 80, // Added endIndent for better visibility
                   ),
-                  SizedBox(height: 40),
+                  SizedBox(height: 30),
                   Container(
                     height: 196,
                     width: double.infinity, // Adjust width to fit available space
@@ -148,6 +189,66 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
+          ),
+          Positioned(
+            bottom: 0,
+            child: Container(
+                width: 430,
+                height: 100,
+                decoration : BoxDecoration(
+                  color : Color(0xFF141414),
+                ),
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height :58,
+                      width: 58,
+                     decoration: BoxDecoration(
+                       color : Color(0xFFFFFFFF).withOpacity(0.2),
+                       borderRadius: BorderRadius.circular(13),
+                     ),
+                      child : Icon(
+                        Icons.home_outlined,
+                        color : Colors.white,
+                        size : 35
+                      ),
+                    ),
+                    SizedBox(width : 60),
+                    Container(
+                      height :58,
+                      width: 58,
+                      decoration: BoxDecoration(
+                        color : Color(0xFF141414).withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(13),
+                      ),
+                      child : Icon(
+                           Icons.tv_rounded,
+                          color : Colors.white,
+                          size : 35
+                      ),
+                    ),
+                    SizedBox(width : 60),
+                    Container(
+                      height :58,
+                      width: 58,
+                      decoration: BoxDecoration(
+                        color : Color(0xFF141414).withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(13),
+                      ),
+                      child : Icon(
+                          Icons.featured_play_list_outlined,
+                          color : Colors.white,
+                          size : 35
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
           ),
         ],
       ),
