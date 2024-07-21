@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_galaxy_explorer/loginOption.dart';
+import 'package:virtual_galaxy_explorer/satelitesstarting.dart';
 import 'package:virtual_galaxy_explorer/starsstarting.dart';
 import 'galaxiesStarting.dart';
 
@@ -31,7 +31,7 @@ class _OverviewState extends State<Overview> {
                   Navigator.pushReplacement(
                     context,
                     PageRouteBuilder(
-                      pageBuilder: (context, animation, secondaryAnimation) => LoginOption(),
+                      pageBuilder: (context, animation, secondaryAnimation) => Satelitesstarting(),
                       transitionsBuilder: (context, animation, secondaryAnimation, child) {
                         const begin = Offset(1.0, 0.0); // Start from the right side
                         const end = Offset.zero; // End at the left side

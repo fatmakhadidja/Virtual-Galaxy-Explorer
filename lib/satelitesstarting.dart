@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_galaxy_explorer/loginOption.dart';
 import 'package:virtual_galaxy_explorer/planetsstarting.dart';
-import 'package:virtual_galaxy_explorer/starsstarting.dart';
 
 class Satelitesstarting extends StatefulWidget {
   const Satelitesstarting({super.key});
@@ -50,7 +48,7 @@ class _SatelitesstartingState extends State<Satelitesstarting> {
                   width: 70,
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.3),
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(15),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -120,7 +118,7 @@ class _SatelitesstartingState extends State<Satelitesstarting> {
                   Navigator.pushReplacement(
                     context,
                     PageRouteBuilder(
-                      pageBuilder: (context, animation, secondaryAnimation) => LoginOption(),
+                      pageBuilder: (context, animation, secondaryAnimation) => Satelitesstarting(),
                       transitionsBuilder: (context, animation, secondaryAnimation, child) {
                         const begin = Offset(1.0, 0.0); // Start from the right side
                         const end = Offset.zero; // End at the left side

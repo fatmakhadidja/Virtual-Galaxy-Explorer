@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_galaxy_explorer/galaxiesStarting.dart';
-import 'package:virtual_galaxy_explorer/loginOption.dart';
 import 'package:virtual_galaxy_explorer/satelitesstarting.dart';
 import 'planetsstarting.dart';
 
