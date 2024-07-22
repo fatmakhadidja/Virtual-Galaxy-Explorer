@@ -61,7 +61,7 @@ class _LaunchState extends State<Launch> {
               ),
             ),
             Positioned(
-              top: 310,
+              top: 330,
               left: 40,
               child: Text(
                 'We will learn all of the scientific \ndisciplines that involve.',

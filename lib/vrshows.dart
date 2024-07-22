@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_galaxy_explorer/home.dart';
 import 'package:virtual_galaxy_explorer/q&a.dart';
+import 'package:virtual_galaxy_explorer/vrPlanet.dart';
 
 class Vrshows extends StatefulWidget {
   const Vrshows({super.key});
@@ -42,9 +43,41 @@ class _VrshowsState extends State<Vrshows> {
     );
   }
 
+  void _navigateToQandA() {
+    Navigator.pushReplacement(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => const QandA(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          const begin = Offset(1.0, 0.0);
+          const end = Offset.zero;
+          const curve = Curves.easeInOut;
+          var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          return SlideTransition(position: animation.drive(tween), child: child);
+        },
+      ),
+    );
+  }
+
+  void _navigateTo(Widget page) {
+    Navigator.pushReplacement(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => page,
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          const begin = Offset(1.0, 0.0);
+          const end = Offset.zero;
+          const curve = Curves.easeInOut;
+          var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          return SlideTransition(position: animation.drive(tween), child: child);
+        },
+      ),
+    );
+  }
+
   Widget _buildNavigationContainer(String imagePath) {
     return GestureDetector(
-      onTap: _navigateToVrshows,
+      onTap: () => _navigateTo(Vrplanet()), // Adjusted to navigate to VrPlanet
       child: Container(
         height: 150,
         width: double.infinity,
@@ -78,22 +111,6 @@ class _VrshowsState extends State<Vrshows> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  void _navigateToQandA() {
-    Navigator.pushReplacement(
-      context,
-      PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => const QandA(),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          const begin = Offset(1.0, 0.0);
-          const end = Offset.zero;
-          const curve = Curves.easeInOut;
-          var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-          return SlideTransition(position: animation.drive(tween), child: child);
-        },
       ),
     );
   }
@@ -161,13 +178,16 @@ class _VrshowsState extends State<Vrshows> {
                     image: AssetImage('assets/containerVrshows.png'),
                   ),
                   const SizedBox(height: 30),
-                  _buildNavigationContainer('assets/planetsRectangle.png'),
+                  GestureDetector(
+                    onTap: () => _navigateTo(Vrplanet()), // Adjusted to navigate to VrPlanet
+                    child: _buildNavigationContainer('assets/vrEarth.png'),
+                  ),
                   const SizedBox(height: 20),
-                  _buildNavigationContainer('assets/galaxiesRectangle.png'),
+                  _buildNavigationContainer('assets/vrMars.png'),
                   const SizedBox(height: 20),
-                  _buildNavigationContainer('assets/starsRectangle.png'),
+                  _buildNavigationContainer('assets/vrJupiter.png'),
                   const SizedBox(height: 20),
-                  _buildNavigationContainer('assets/satellitesRectangle.png'),
+                  _buildNavigationContainer('assets/vrSaturn.png'),
                   const SizedBox(height: 80),
                 ],
               ),
@@ -196,7 +216,7 @@ class _VrshowsState extends State<Vrshows> {
                     const SizedBox(width: 60),
                     GestureDetector(
                       onTap: _navigateToQandA,
-                      child : _buildBottomNavigationIcon(Icons.featured_play_list_outlined, Color(0xFF141414).withOpacity(0.2)),
+                      child: _buildBottomNavigationIcon(Icons.featured_play_list_outlined, Color(0xFF141414).withOpacity(0.2)),
                     ),
                   ],
                 ),

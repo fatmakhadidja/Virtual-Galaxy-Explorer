@@ -12,23 +12,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
-  void _navigateToQandA() {
-    Navigator.pushReplacement(
-      context,
-      PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => const QandA(),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          const begin = Offset(1.0, 0.0);
-          const end = Offset.zero;
-          const curve = Curves.easeInOut;
-          var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-          return SlideTransition(position: animation.drive(tween), child: child);
-        },
-      ),
-    );
-  }
-
   void _navigateToPage(Widget page, Offset startOffset) {
     Navigator.pushReplacement(
       context,
@@ -86,6 +69,27 @@ class _HomeState extends State<Home> {
     );
   }
 
+  Widget _buildBottomNavigationIcon(IconData icon, Color color, VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 58,
+        width: 58,
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(13),
+        ),
+        child: Center(
+          child: Icon(
+            icon,
+            color: Colors.white,
+            size: 35,
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,8 +111,7 @@ class _HomeState extends State<Home> {
                 children: [
                   const SizedBox(height: 15),
                   GestureDetector(
-                    onTap: () => _navigateToPage(
-                        const Satelitesstarting(), const Offset(-1.0, 0.0)),
+                    onTap: () => _navigateToPage(const Satelitesstarting(), const Offset(-1.0, 0.0)),
                     child: Container(
                       height: 40,
                       width: 70,
@@ -147,7 +150,7 @@ class _HomeState extends State<Home> {
                           color: Colors.white,
                         ),
                       ),
-                      const SizedBox(width: 20), // Add spacing between Lottie animation and text
+                      const SizedBox(width: 5), // Add spacing between Lottie animation and text
                       Flexible(
                         child: Lottie.asset(
                           'assets/earth.json',
@@ -186,40 +189,29 @@ class _HomeState extends State<Home> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _buildBottomNavigationIcon(Icons.home_outlined, const Color(0xFFFFFFFF).withOpacity(0.2)),
-                    const SizedBox(width: 60),
-                    GestureDetector(
-                      onTap: () => _navigateToPage(const Vrshows(), const Offset(1.0, 0.0)),
-                      child: _buildBottomNavigationIcon(Icons.tv_rounded, const Color(0xFF141414).withOpacity(0.2)),
+                    _buildBottomNavigationIcon(
+                      Icons.home_outlined,
+                      const Color(0xFFFFFFFF).withOpacity(0.2),
+                          () {},
                     ),
                     const SizedBox(width: 60),
-                    GestureDetector(
-                      onTap : _navigateToQandA,
-                      child :_buildBottomNavigationIcon(Icons.featured_play_list_outlined, Color(0x141414).withOpacity(0.2)),
-                    ),                  ],
+                    _buildBottomNavigationIcon(
+                      Icons.tv_rounded,
+                      const Color(0xFF141414).withOpacity(0.2),
+                          () => _navigateToPage(const Vrshows(), const Offset(1.0, 0.0)),
+                    ),
+                    const SizedBox(width: 60),
+                    _buildBottomNavigationIcon(
+                      Icons.featured_play_list_outlined,
+                      const Color(0xFF141414).withOpacity(0.2),
+                          () => _navigateToPage(const QandA(), const Offset(1.0, 0.0)),
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildBottomNavigationIcon(IconData icon, Color color) {
-    return Container(
-      height: 58,
-      width: 58,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(13),
-      ),
-      child: Center(
-        child: Icon(
-          icon,
-          color: Colors.white,
-          size: 35,
-        ),
       ),
     );
   }
