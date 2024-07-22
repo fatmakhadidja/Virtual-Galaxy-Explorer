@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_galaxy_explorer/home.dart';
-import 'package:virtual_galaxy_explorer/q&a.dart';
-import 'package:virtual_galaxy_explorer/vrPlanet.dart';
+import 'package:virtual_galaxy_explorer/Q&A/q&aGalaxies.dart';
+import 'package:virtual_galaxy_explorer/Q&A/q&aPlanets.dart';
+import 'package:virtual_galaxy_explorer/Q&A/q&aSatellites.dart';
+import 'package:virtual_galaxy_explorer/Q&A/q&aStars.dart';
+import 'package:virtual_galaxy_explorer/VR/vrshows.dart';
 
-class Vrshows extends StatefulWidget {
-  const Vrshows({super.key});
+class QandA extends StatefulWidget {
+  const QandA({super.key});
 
   @override
-  State<Vrshows> createState() => _VrshowsState();
+  State<QandA> createState() => _QandAState();
 }
 
-class _VrshowsState extends State<Vrshows> {
+class _QandAState extends State<QandA> {
   void _navigateToHome() {
     Navigator.pushReplacement(
       context,
@@ -18,38 +21,6 @@ class _VrshowsState extends State<Vrshows> {
         pageBuilder: (context, animation, secondaryAnimation) => const Home(),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           const begin = Offset(-1.0, 0.0);
-          const end = Offset.zero;
-          const curve = Curves.easeInOut;
-          var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-          return SlideTransition(position: animation.drive(tween), child: child);
-        },
-      ),
-    );
-  }
-
-  void _navigateToVrshows() {
-    Navigator.pushReplacement(
-      context,
-      PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => const Vrshows(),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          const begin = Offset(1.0, 0.0);
-          const end = Offset.zero;
-          const curve = Curves.easeInOut;
-          var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-          return SlideTransition(position: animation.drive(tween), child: child);
-        },
-      ),
-    );
-  }
-
-  void _navigateToQandA() {
-    Navigator.pushReplacement(
-      context,
-      PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => const QandA(),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          const begin = Offset(1.0, 0.0);
           const end = Offset.zero;
           const curve = Curves.easeInOut;
           var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
@@ -75,10 +46,43 @@ class _VrshowsState extends State<Vrshows> {
     );
   }
 
+  void _navigateToVrshows() {
+    Navigator.pushReplacement(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => const Vrshows(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          const begin = Offset(-1.0, 0.0);
+          const end = Offset.zero;
+          const curve = Curves.easeInOut;
+          var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          return SlideTransition(position: animation.drive(tween), child: child);
+        },
+      ),
+    );
+  }
+
+  Widget _buildBottomNavigationIcon(IconData icon, Color color) {
+    return Container(
+      height: 58,
+      width: 58,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(13),
+      ),
+      child: Center(
+        child: Icon(
+          icon,
+          color: Colors.white,
+          size: 35,
+        ),
+      ),
+    );
+  }
+
   Widget _buildNavigationContainer(String imagePath) {
-    return GestureDetector(
-      onTap: () => _navigateTo(Vrplanet()), // Adjusted to navigate to VrPlanet
-      child: Container(
+
+      return  Container(
         height: 150,
         width: double.infinity,
         decoration: BoxDecoration(
@@ -111,10 +115,8 @@ class _VrshowsState extends State<Vrshows> {
             ),
           ],
         ),
-      ),
     );
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -155,7 +157,7 @@ class _VrshowsState extends State<Vrshows> {
                   ),
                   const SizedBox(height: 20),
                   const Text(
-                    'Let\'s dive in',
+                    'Let\'s answer',
                     style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w500,
@@ -165,7 +167,7 @@ class _VrshowsState extends State<Vrshows> {
                   ),
                   const SizedBox(height: 6),
                   const Text(
-                    'VR shows',
+                    'Q&A polls',
                     style: TextStyle(
                       fontSize: 33,
                       fontWeight: FontWeight.w600,
@@ -175,19 +177,30 @@ class _VrshowsState extends State<Vrshows> {
                   ),
                   const SizedBox(height: 20),
                   const Image(
-                    image: AssetImage('assets/containerVrshows.png'),
+                    image: AssetImage('assets/q&aContainer.png'),
                   ),
                   const SizedBox(height: 30),
                   GestureDetector(
-                    onTap: () => _navigateTo(Vrplanet()), // Adjusted to navigate to VrPlanet
-                    child: _buildNavigationContainer('assets/vrEarth.png'),
+                    onTap: () => _navigateTo(QandAPlanets()),
+                   child : _buildNavigationContainer('assets/planetsRectangle.png'),
                   ),
                   const SizedBox(height: 20),
-                  _buildNavigationContainer('assets/vrMars.png'),
+                  GestureDetector(
+                    onTap : () => _navigateTo(QandAGalaxies()),
+                  child: _buildNavigationContainer('assets/galaxiesRectangle.png'),
+                  ),
                   const SizedBox(height: 20),
-                  _buildNavigationContainer('assets/vrJupiter.png'),
+                  GestureDetector(
+                  onTap : () => _navigateTo(QandAStars()),
+                    child :_buildNavigationContainer('assets/starsRectangle.png'),
+                  ),
+
                   const SizedBox(height: 20),
-                  _buildNavigationContainer('assets/vrSaturn.png'),
+                  GestureDetector(
+                    onTap : () => _navigateTo(QandASatellites()),
+                    child :_buildNavigationContainer('assets/satellitesRectangle.png'),
+                  ),
+
                   const SizedBox(height: 80),
                 ],
               ),
@@ -212,36 +225,18 @@ class _VrshowsState extends State<Vrshows> {
                       child: _buildBottomNavigationIcon(Icons.home_outlined, Color(0xFF141414).withOpacity(0.2)),
                     ),
                     const SizedBox(width: 60),
-                    _buildBottomNavigationIcon(Icons.tv_rounded, Colors.white.withOpacity(0.2)),
-                    const SizedBox(width: 60),
                     GestureDetector(
-                      onTap: _navigateToQandA,
-                      child: _buildBottomNavigationIcon(Icons.featured_play_list_outlined, Color(0xFF141414).withOpacity(0.2)),
+                      onTap: _navigateToVrshows,
+                      child: _buildBottomNavigationIcon(Icons.tv_rounded, Color(0xFF141414).withOpacity(0.2)),
                     ),
+                    const SizedBox(width: 60),
+                    _buildBottomNavigationIcon(Icons.featured_play_list_outlined, Colors.white.withOpacity(0.2)),
                   ],
                 ),
               ),
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildBottomNavigationIcon(IconData icon, Color color) {
-    return Container(
-      height: 58,
-      width: 58,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(13),
-      ),
-      child: Center(
-        child: Icon(
-          icon,
-          color: Colors.white,
-          size: 35,
-        ),
       ),
     );
   }

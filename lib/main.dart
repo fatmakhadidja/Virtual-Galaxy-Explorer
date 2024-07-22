@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'launch.dart';
-import 'q&a.dart';
+import 'Q&A/q&a.dart';
 
 
 void main() {

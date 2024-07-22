@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_galaxy_explorer/satelitesstarting.dart';
-import 'package:virtual_galaxy_explorer/starsstarting.dart';
-import 'galaxiesStarting.dart';
+import 'package:virtual_galaxy_explorer/Starting pages/satelitesstarting.dart';
+import 'package:virtual_galaxy_explorer/Starting pages/starsstarting.dart';
+import 'Starting pages/galaxiesStarting.dart';
 import 'package:virtual_galaxy_explorer/launch.dart';
 
 class Overview extends StatefulWidget {

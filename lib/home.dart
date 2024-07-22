@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:virtual_galaxy_explorer/satelitesstarting.dart';
-import 'package:virtual_galaxy_explorer/vrshows.dart';
-import 'package:virtual_galaxy_explorer/q&a.dart'; // Import the QandA page
+import 'package:virtual_galaxy_explorer/Starting pages/satelitesstarting.dart';
+import 'package:virtual_galaxy_explorer/VR/vrshows.dart';
+import 'package:virtual_galaxy_explorer/Q&A/q&a.dart'; // Import the QandA page
 
 class Home extends StatefulWidget {
   const Home({super.key});

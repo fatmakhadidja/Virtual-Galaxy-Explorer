@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_galaxy_explorer/starsstarting.dart';
-import 'package:virtual_galaxy_explorer/satelitesstarting.dart';
+import 'package:virtual_galaxy_explorer/overview.dart';
+import 'package:virtual_galaxy_explorer/Starting pages/planetsstarting.dart';
+import 'package:virtual_galaxy_explorer/Starting pages/starsstarting.dart';
 
-class Planetsstarting extends StatefulWidget {
-  const Planetsstarting({super.key});
+class Galaxiesstarting extends StatefulWidget {
+  const Galaxiesstarting({super.key});
 
   @override
-  State<Planetsstarting> createState() => _PlanetsstartingState();
+  State<Galaxiesstarting> createState() => _GalaxiesstartingState();
 }
 
-class _PlanetsstartingState extends State<Planetsstarting> {
+class _GalaxiesstartingState extends State<Galaxiesstarting> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/planetsstartingImage.png'), // Replace with your image path
+            image: AssetImage('assets/galaxiesstarting.png'), // Replace with your image path
             fit: BoxFit.cover,
           ),
         ),
@@ -36,10 +37,10 @@ class _PlanetsstartingState extends State<Planetsstarting> {
               ),
             ),
             Positioned(
-              top: 140,
+              top: 150,
               left: 40,
               child: const Text(
-                'Planets',
+                'Galaxies',
                 style: TextStyle(
                   fontSize: 63,
                   fontWeight: FontWeight.w600,
@@ -52,13 +53,11 @@ class _PlanetsstartingState extends State<Planetsstarting> {
               bottom: 190,
               left: 40,
               child: const Text(
-                'Embark on a celestial journey\n'
-                    'to explore the captivating\n'
-                    'realms of planets. From the fiery\n'
-                    'surface of Venus to the icy \n'
-                    'mysteries of Neptune, this section\n'
-                    ' is your portal to unravel the \n'
-                    'diverse landscapes and enigmas',
+                   'Explore the Marvels of Galaxies:\n'
+                    'Dive into a cosmic journey to\n'
+                    'learn about the awe-inspiring\n'
+                    'galaxies that populate our\n'
+                       'universe. ',
                 style: TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.w500,
@@ -71,13 +70,14 @@ class _PlanetsstartingState extends State<Planetsstarting> {
               bottom: 40,
               left : 107,
               child: Row(
+
                 children: [
                   GestureDetector(
                     onTap: () {
                       Navigator.pushReplacement(
                         context,
                         PageRouteBuilder(
-                          pageBuilder: (context, animation, secondaryAnimation) => Starsstarting(), // Ensure this page exists
+                          pageBuilder: (context, animation, secondaryAnimation) => Overview(), // Ensure this page exists
                           transitionsBuilder: (context, animation, secondaryAnimation, child) {
                             const begin = Offset(-1.0, 0.0); // Start from the left side
                             const end = Offset.zero; // End at the current position
@@ -111,7 +111,7 @@ class _PlanetsstartingState extends State<Planetsstarting> {
                       Navigator.pushReplacement(
                         context,
                         PageRouteBuilder(
-                          pageBuilder: (context, animation, secondaryAnimation) => Satelitesstarting(),
+                          pageBuilder: (context, animation, secondaryAnimation) => Starsstarting(),
                           transitionsBuilder: (context, animation, secondaryAnimation, child) {
                             const begin = Offset(1.0, 0.0); // Start from the right side
                             const end = Offset.zero; // End at the left side
@@ -145,7 +145,7 @@ class _PlanetsstartingState extends State<Planetsstarting> {
                       Navigator.pushReplacement(
                         context,
                         PageRouteBuilder(
-                          pageBuilder: (context, animation, secondaryAnimation) => Satelitesstarting(),
+                          pageBuilder: (context, animation, secondaryAnimation) => Starsstarting(),
                           transitionsBuilder: (context, animation, secondaryAnimation, child) {
                             const begin = Offset(1.0, 0.0); // Start from the right side
                             const end = Offset.zero; // End at the left side
@@ -162,6 +162,39 @@ class _PlanetsstartingState extends State<Planetsstarting> {
                     child: Container(
                       height: 22,
                       width: 22,
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.white, // Set the stroke color
+                          width: 4, // Set the stroke width
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 30),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation, secondaryAnimation) => Planetsstarting(),
+                          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                            const begin = Offset(1.0, 0.0); // Start from the right side
+                            const end = Offset.zero; // End at the left side
+                            const curve = Curves.easeInOut;
+                            var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                            return SlideTransition(
+                              position: animation.drive(tween),
+                              child: child,
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: 14,
+                      width: 14,
                       decoration: BoxDecoration(
                         color: Colors.transparent,
                         shape: BoxShape.circle,

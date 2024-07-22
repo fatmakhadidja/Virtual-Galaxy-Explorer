@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_galaxy_explorer/planetsstarting.dart';
+import 'package:virtual_galaxy_explorer/Starting pages/planetsstarting.dart';
 import 'package:virtual_galaxy_explorer/home.dart';
 
 class Satelitesstarting extends StatefulWidget {

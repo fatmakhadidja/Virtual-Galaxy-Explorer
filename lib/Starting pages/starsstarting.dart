@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_galaxy_explorer/galaxiesStarting.dart';
-import 'package:virtual_galaxy_explorer/satelitesstarting.dart';
-import 'planetsstarting.dart';
+import 'package:virtual_galaxy_explorer/Starting pages/galaxiesStarting.dart';
+import 'package:virtual_galaxy_explorer/Starting pages/satelitesstarting.dart';
+import 'package:virtual_galaxy_explorer/Starting pages//planetsstarting.dart';
 
 
 
