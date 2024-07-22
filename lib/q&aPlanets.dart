@@ -74,6 +74,27 @@ class _QandAPlanetsState extends State<QandAPlanets> {
     );
   }
 
+  void _showCompletionDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Questions Completed'),
+          content: Text('The questions about planets are done. We hope you enjoyed discovering about them.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+                Navigator.pushReplacementNamed(context, '/q&a'); // Navigate to QandA page
+              },
+              child: Text('Continue'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -207,16 +228,15 @@ class _QandAPlanetsState extends State<QandAPlanets> {
                               selectedContainer = -1; // Reset selection
                               label = 'Next'; // Reset label when moving to the next question
                             });
-                          } else if (counter == questions.length - 1) {
-                            // Last question, change button to 'Finish'
-                            Navigator.pushReplacementNamed(context, '/q&a');
-                            // Handle finish action if needed
+                          } else {
+                            // Last question, show completion dialog
+                            _showCompletionDialog();
                           }
                         }
                       },
                       child: _buildNextButton(
-                          label == 'Finish' ? Colors.grey : Colors.white,
-                          label == 'Finish' ? Colors.white : Colors.black,
+                          Colors.white,
+                          Colors.black,
                           label
                       ),
                     ),

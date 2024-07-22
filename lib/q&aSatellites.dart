@@ -12,7 +12,7 @@ class _QandASatellitesState extends State<QandASatellites> {
     'Which satellite is the first artificial satellite?',
     'What is the name of the satellite system used for GPS?',
     'Which satellite is known for providing global weather data?',
-    'What is the name of the telescope satellite launched in 1990?'
+    'What is the name of the telescope satellite launched in 1990?',
   ];
 
   List<List<String>> answers = [
@@ -71,6 +71,27 @@ class _QandASatellitesState extends State<QandASatellites> {
           ),
         ],
       ),
+    );
+  }
+
+  void _showCompletionDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Questions Completed'),
+          content: Text('The questions about satellites are done. We hope you enjoyed discovering about them.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+                Navigator.pushReplacementNamed(context, '/q&a'); // Navigate to QandA page
+              },
+              child: Text('Continue'),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -207,10 +228,9 @@ class _QandASatellitesState extends State<QandASatellites> {
                               selectedContainer = -1; // Reset selection
                               label = 'Next'; // Reset label when moving to the next question
                             });
-                          } else if (counter == questions.length - 1) {
-                            // Last question, change button to 'Finish'
-                            Navigator.pushReplacementNamed(context, '/q&a');
-                            // Handle finish action if needed
+                          } else  {
+                            // Last question, show completion dialog
+                            _showCompletionDialog();
                           }
                         }
                       },

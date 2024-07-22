@@ -74,6 +74,27 @@ class _QandAGalaxiesState extends State<QandAGalaxies> {
     );
   }
 
+  void _showCompletionDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Questions Completed'),
+          content: Text('The questions about galaxies are done, we hope you enjoyed discovering about them.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.pushReplacementNamed(context, '/q&a');
+              },
+              child: Text('Continue'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -208,9 +229,8 @@ class _QandAGalaxiesState extends State<QandAGalaxies> {
                               label = 'Next'; // Reset label when moving to the next question
                             });
                           } else if (counter == questions.length - 1) {
-                            // Last question, change button to 'Finish'
-                            Navigator.pushReplacementNamed(context, '/q&a');
-                            // Handle finish action if needed
+                            // Last question, show completion dialog
+                            _showCompletionDialog();
                           }
                         }
                       },
