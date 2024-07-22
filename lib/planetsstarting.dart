@@ -69,7 +69,7 @@ class _PlanetsstartingState extends State<Planetsstarting> {
             ),
             Positioned(
               bottom: 40,
-              left : 120,
+              left : 107,
               child: Row(
                 children: [
                   GestureDetector(
