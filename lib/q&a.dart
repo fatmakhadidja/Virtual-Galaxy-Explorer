@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_galaxy_explorer/home.dart';
+import 'package:virtual_galaxy_explorer/q&aPlanets.dart';
 import 'package:virtual_galaxy_explorer/vrshows.dart';
 
 class QandA extends StatefulWidget {
@@ -26,13 +27,13 @@ class _QandAState extends State<QandA> {
     );
   }
 
-  void _navigateToQandA() {
+  void _navigateTo(Widget page) {
     Navigator.pushReplacement(
       context,
       PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => const QandA(),
+        pageBuilder: (context, animation, secondaryAnimation) => page,
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          const begin = Offset(-1.0, 0.0);
+          const begin = Offset(1.0, 0.0);
           const end = Offset.zero;
           const curve = Curves.easeInOut;
           var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
@@ -77,10 +78,9 @@ class _QandAState extends State<QandA> {
   }
 
   Widget _buildNavigationContainer(String imagePath) {
-    return GestureDetector(
-      onTap: _navigateToQandA,
-      child: Container(
-        height: 196,
+
+      return  Container(
+        height: 150,
         width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -112,7 +112,6 @@ class _QandAState extends State<QandA> {
             ),
           ],
         ),
-      ),
     );
   }
   @override
@@ -155,7 +154,7 @@ class _QandAState extends State<QandA> {
                   ),
                   const SizedBox(height: 20),
                   const Text(
-                    'Let\'s dive in',
+                    'Let\'s answer',
                     style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w500,
@@ -165,7 +164,7 @@ class _QandAState extends State<QandA> {
                   ),
                   const SizedBox(height: 6),
                   const Text(
-                    'VR shows',
+                    'Q&A polls',
                     style: TextStyle(
                       fontSize: 33,
                       fontWeight: FontWeight.w600,
@@ -175,10 +174,13 @@ class _QandAState extends State<QandA> {
                   ),
                   const SizedBox(height: 20),
                   const Image(
-                    image: AssetImage('assets/containerVrshows.png'),
+                    image: AssetImage('assets/q&aContainer.png'),
                   ),
                   const SizedBox(height: 30),
-                  _buildNavigationContainer('assets/planetsRectangle.png'),
+                  GestureDetector(
+                    onTap: () => _navigateTo(QandAPlanets()),
+                   child : _buildNavigationContainer('assets/planetsRectangle.png'),
+                  ),
                   const SizedBox(height: 20),
                   _buildNavigationContainer('assets/galaxiesRectangle.png'),
                   const SizedBox(height: 20),

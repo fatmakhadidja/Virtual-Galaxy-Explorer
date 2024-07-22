@@ -46,7 +46,7 @@ class _VrshowsState extends State<Vrshows> {
     return GestureDetector(
       onTap: _navigateToVrshows,
       child: Container(
-        height: 196,
+        height: 150,
         width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
