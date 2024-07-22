@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_galaxy_explorer/home.dart';
+import 'package:virtual_galaxy_explorer/q&aGalaxies.dart';
 import 'package:virtual_galaxy_explorer/q&aPlanets.dart';
+import 'package:virtual_galaxy_explorer/q&aSatellites.dart';
+import 'package:virtual_galaxy_explorer/q&aStars.dart';
 import 'package:virtual_galaxy_explorer/vrshows.dart';
 
 class QandA extends StatefulWidget {
@@ -182,11 +185,22 @@ class _QandAState extends State<QandA> {
                    child : _buildNavigationContainer('assets/planetsRectangle.png'),
                   ),
                   const SizedBox(height: 20),
-                  _buildNavigationContainer('assets/galaxiesRectangle.png'),
+                  GestureDetector(
+                    onTap : () => _navigateTo(QandAGalaxies()),
+                  child: _buildNavigationContainer('assets/galaxiesRectangle.png'),
+                  ),
                   const SizedBox(height: 20),
-                  _buildNavigationContainer('assets/starsRectangle.png'),
+                  GestureDetector(
+                  onTap : () => _navigateTo(QandAStars()),
+                    child :_buildNavigationContainer('assets/starsRectangle.png'),
+                  ),
+
                   const SizedBox(height: 20),
-                  _buildNavigationContainer('assets/satellitesRectangle.png'),
+                  GestureDetector(
+                    onTap : () => _navigateTo(QandASatellites()),
+                    child :_buildNavigationContainer('assets/satellitesRectangle.png'),
+                  ),
+
                   const SizedBox(height: 80),
                 ],
               ),
