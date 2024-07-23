@@ -4,6 +4,7 @@ Galaxy Explorer is a mobile application built using Flutter, designed to provide
 
 PS : 
 - the code for the pages of the mobile application can be found in the lib directory.
+- you can find the account ( figma account ) of the designer of the UI here : https://www.figma.com/@foveromw .
 
 # Demonstration of the application :
 ## First pages : 
