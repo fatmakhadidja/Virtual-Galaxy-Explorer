@@ -9,9 +9,5 @@ PS :
 ## First pages : 
 Here are some simple and professional descriptions for the introductory pages of our application :
 
-![Uploading Start1.png…]()   ![Start2](https://github.com/user-attachments/assets/c2e255cc-1568-4467-9952-eaa4b182b124)      ![Start3](https://github.com/user-attachments/assets/206c5819-ab36-42b2-8cf5-5f9cc0d366aa)
-
-
-![Uploading Start4.png…]()   ![Uploading Start5.png…]()      ![Uploading Start6.png…]()
 
 
