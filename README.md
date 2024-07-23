@@ -7,7 +7,6 @@ PS :
 
 # Demonstration of the application :
 ## First pages : 
-Here are some simple and professional descriptions for the introductory pages of our application :
+Here are some simple and introductory pages of our application :
 
-
-
+![StartingPages](https://github.com/user-attachments/assets/54c56419-3d2f-4f4b-b419-fc9435a5313a)
