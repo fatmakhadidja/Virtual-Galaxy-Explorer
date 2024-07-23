@@ -12,12 +12,12 @@ Here are some simple and introductory pages of our application :
 ![StartingPages](https://github.com/user-attachments/assets/54c56419-3d2f-4f4b-b419-fc9435a5313a)
 
 ## Home page : 
-In the home page the user finds two options to learn about outer space : Vr shows and Q&A polls :
+On the home page, users can choose from two exciting options to learn about outer space: immersive VR shows for a virtual exploration experience and interactive Q&A polls to test and expand their knowledge.
 
 ![Home](https://github.com/user-attachments/assets/73d69174-6936-4eef-ad07-7fa5f1149b1d)
 
 ## Vr shows page :
-It displays planets images - 3D - in which the user can interact with : (not completed yet)
+The app features an interactive selection screen with stunning 3D images of planets. Users can engage with these images to explore detailed, immersive representations of celestial bodies. This interactive experience is designed to enhance user engagement and curiosity (feature currently under development).
 
 ![Vrshows](https://github.com/user-attachments/assets/2a2e5d5a-eb40-4599-92a6-377f32aa2e98)
 
