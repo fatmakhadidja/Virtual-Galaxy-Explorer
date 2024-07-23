@@ -19,7 +19,7 @@ In the home page the user finds two options to learn about outer space : Vr show
 ## Vr shows page :
 It displays planets images - 3D - in which the user can interact with : (not completed yet)
 
-![Vrshows](https://github.com/user-attachments/assets/c9c9472b-fc2d-44fc-b0b7-7c0d1f15cf11)
+![Vrshows](https://github.com/user-attachments/assets/2a2e5d5a-eb40-4599-92a6-377f32aa2e98)
 
 ## Q&A polls page :
 The app offers an engaging selection screen featuring a variety of celestial options such as galaxies, stars, and planets. Upon selecting an option, users are directed to a detailed page where they can explore and answer questions related to their chosen celestial body, enhancing their learning and interaction experience :
